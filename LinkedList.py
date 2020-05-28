@@ -23,12 +23,26 @@ class Singly_LinkedList():
         self.head = new_node
         print("your list looks like")
 
+    def delete_first_node(self):
+        delete_node = self.head
+        self.head = self.head.next
+        del delete_node
+
     def add_at_end(self, node_name, node_data):
         current_node = self.head
 
         while current_node.next is not None:
             current_node = current_node.next
         current_node.next = Node(node_name, node_data)
+
+    def delete_last_node(self):
+        current_node = self.head
+
+        while current_node.next.next is not None:
+            current_node = current_node.next
+
+        del current_node.next
+        current_node.next = None
 
     # adds node after a specified node name
 
@@ -40,6 +54,15 @@ class Singly_LinkedList():
                 new_node = Node(node_name, node_data)
                 new_node.next = current_node.next
                 current_node.next = new_node
+            current_node = current_node.next
+
+    def delete_specified_node(self, specified_node_name):
+        current_node = self.head
+
+        while current_node.next is not None:
+            if current_node.next.name == specified_node_name:
+                current_node.next = current_node.next.next
+                break
             current_node = current_node.next
 
     # print the information of a spefific node
@@ -58,10 +81,9 @@ class Singly_LinkedList():
             return "specified node: \n".upper() + str(current_node)
         # if node is not found
         else:
-            return "No such node found"
+            return "No such node with name: \n\t" + specified_node_name + "\n"
 
     # print how the linkedlist looks like
-
     def print_list(self):
         llist = ""
         current_node = self.head
@@ -72,7 +94,6 @@ class Singly_LinkedList():
         print(llist + "\n")
 
     # print the information stored on every node
-
     def print_information(self):
         current_node = self.head
         print("full LList information".upper())
@@ -92,14 +113,24 @@ class Singly_LinkedList():
         return num_nodes
 
 
+# linkedlist creation methods
 slinkedList = Singly_LinkedList("A", 5)
 slinkedList.add_at_end("B", 6)
 slinkedList.add_at_end("c", 7)
+slinkedList.add_at_start("sausage", 6)
 slinkedList.add_at_start("d", 4)
-slinkedList.add_after_specified("A", "e", 5)
-
+slinkedList.add_after_specified("A", "E", 5)
 slinkedList.print_list()
-slinkedList.print_information()
+print("=" * 100)
+
+# linked list delteion functions
+slinkedList.delete_first_node()
+slinkedList.delete_last_node()
+slinkedList.delete_specified_node("A")
+slinkedList.print_list()
+
+# slinkedList.print_information()
 print(slinkedList.print_specific_info("alksdj"))
+print(slinkedList.print_specific_info("A"))
 
 print(slinkedList.count_nodes())
