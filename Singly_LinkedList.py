@@ -21,6 +21,7 @@ class LinkedList():
         new_node = Node(node_name, node_data)
         new_node.next = self.head
         self.head = new_node
+        print("your list looks like")
 
     def add_at_end(self, node_name, node_data):
         current_node = self.head
@@ -49,22 +50,24 @@ class LinkedList():
                 break
             current_node = current_node.next
 
-    def print_list(self):
-        llist = ""
-        current_node = self.head
-        while current_node.next is not None:
-            llist += current_node.name + "->"
-            current_node = current_node.next
-        llist += current_node.name + "->Null"
-        print(llist + "\n")
 
-    def print_information(self):
-        current_node = self.head
-        print("full LList information".upper())
-        while current_node.next is not None:
-            print(current_node)
-            current_node = current_node.next
+def print_list(linked_list):
+    llist = ""
+    current_node = linked_list.head
+    while current_node.next is not None:
+        llist += current_node.name + "->"
+        current_node = current_node.next
+    llist += current_node.name + "->Null"
+    print(llist + "\n")
+
+
+def print_information(linked_list):
+    current_node = linked_list.head
+    print("full LList information".upper())
+    while current_node.next is not None:
         print(current_node)
+        current_node = current_node.next
+    print(current_node)
 
 
 schedule = LinkedList("A", 5)
@@ -73,6 +76,5 @@ schedule.add_at_end("c", 7)
 schedule.add_at_start("d", 4)
 schedule.add_after_specified("A", "e", 5)
 
-schedule.print_list()
-schedule.print_specific_info("A")
-schedule.print_information()
+print_list(schedule)
+print_information(schedule)
