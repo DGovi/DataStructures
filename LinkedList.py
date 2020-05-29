@@ -4,6 +4,7 @@ class Node:
         self.name = name.capitalize()
         self.data = data
         self.next = None
+        print("Node Added")
 
     def __str__(self):
         # return name of node
@@ -13,20 +14,30 @@ class Singly_LinkedList():
 
     # if there is a linked list, there is at least one node
     def __init__(self, first_node_name, first_node_data):
+        print("Linked List created")
         self.head = Node(first_node_name, first_node_data)
-        print("LinkedList Create with Node: " + first_node_name +
-              " \n\tNames will be automatically capitalized\n")
+
+        # print how the linkedlist looks like
+
+    def __str__(self):
+        llist = ""
+        current_node = self.head
+        while current_node.next is not None:
+            llist += current_node.name + "->"
+            current_node = current_node.next
+        llist += current_node.name + "->Null"
+        return "your list looks like\n" + llist + "\n"
 
     def add_at_start(self, node_name, node_data):
         new_node = Node(node_name, node_data)
         new_node.next = self.head
         self.head = new_node
-        print("your list looks like")
 
     def delete_first_node(self):
         delete_node = self.head
         self.head = self.head.next
         del delete_node
+        print("deleted a node")
 
     def add_at_end(self, node_name, node_data):
         current_node = self.head
@@ -43,6 +54,7 @@ class Singly_LinkedList():
 
         del current_node.next
         current_node.next = None
+        print("deleted a node")
 
     # adds node after a specified node name
 
@@ -64,6 +76,7 @@ class Singly_LinkedList():
                 current_node.next = current_node.next.next
                 break
             current_node = current_node.next
+        print("deleted a node")
 
     # print the information of a spefific node
     def print_specific_info(self, specified_node_name):
@@ -82,16 +95,6 @@ class Singly_LinkedList():
         # if node is not found
         else:
             return "No such node with name: \n\t" + specified_node_name + "\n"
-
-    # print how the linkedlist looks like
-    def print_list(self):
-        llist = ""
-        current_node = self.head
-        while current_node.next is not None:
-            llist += current_node.name + "->"
-            current_node = current_node.next
-        llist += current_node.name + "->Null"
-        print(llist + "\n")
 
     # print the information stored on every node
     def print_information(self):
@@ -120,15 +123,15 @@ slinkedList.add_at_end("c", 7)
 slinkedList.add_at_start("sausage", 6)
 slinkedList.add_at_start("d", 4)
 slinkedList.add_after_specified("A", "E", 5)
-slinkedList.print_list()
+print(slinkedList)
+print(slinkedList.count_nodes())
 print("=" * 100)
 
 # linked list delteion functions
 slinkedList.delete_first_node()
 slinkedList.delete_last_node()
 slinkedList.delete_specified_node("A")
-slinkedList.print_list()
-
+print(slinkedList)
 # slinkedList.print_information()
 print(slinkedList.print_specific_info("alksdj"))
 print(slinkedList.print_specific_info("A"))
