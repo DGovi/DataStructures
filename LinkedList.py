@@ -142,7 +142,7 @@ print(slinkedList.print_specific_info("A"))
 print(slinkedList.count_nodes())
 '''
 
-class Doubly_LinkedList():
+class Doubly_LinkedList(Singly_LinkedList):
 
     def __init__(self, node_name, node_data):
         print("Doubly Linked list created")
@@ -164,21 +164,6 @@ class Doubly_LinkedList():
             current_node = current_node.next
         current_node.next = Node(node_name, node_data)
         current_node.next.previous = current_node
-
-    def delete_last_node(self):
-        current_node = self.head
-
-        while current_node.next.next is not None:
-            current_node = current_node.next
-
-        del current_node.next
-        current_node.next = None
-        print("deleted a node")
-
-    def add_at_start(self, node_name, node_data):
-        new_node = Node(node_name, node_data)
-        new_node.next = self.head
-        self.head = new_node
 
     def delete_first_node(self):
         delete_node = self.head
@@ -211,45 +196,7 @@ class Doubly_LinkedList():
             current_node = current_node.next
         print("deleted a node")
 
-    # print the information of a spefific node
-    def print_specific_info(self, specified_node_name):
-        current_node = self.head
 
-        # a generic case
-        while current_node.next is not None:
-            if current_node.name == specified_node_name:
-                return "specified node: \n".upper() + str(current_node)
-                break
-            current_node = current_node.next
-
-        # if the specified node is the last one
-        if current_node.name == specified_node_name:
-            return "specified node: \n".upper() + str(current_node)
-        # if node is not found
-        else:
-            return "No such node with name: \n\t" + specified_node_name + "\n"
-
-    # print the information stored on every node
-    def print_information(self):
-        current_node = self.head
-        print("full LList information".upper())
-        while current_node.next is not None:
-            print(current_node)
-            current_node = current_node.next
-        print(current_node)
-
-    def count_nodes(self):
-        num_nodes = 1
-        current_node = self.head
-
-        while current_node.next is not None:
-            num_nodes += 1
-            current_node = current_node.next
-
-        return num_nodes
-
-
-'''
 dlinkedList = Doubly_LinkedList("A", 5)
 dlinkedList.add_at_end("B", 6)
 dlinkedList.add_at_end("c", 7)
@@ -258,7 +205,7 @@ dlinkedList.add_at_start("sausage", 6)
 dlinkedList.add_at_start("d", 4)
 dlinkedList.add_after_specified("A", "E", 5)
 
-# print(dlinkedList.count_nodes())
+print(dlinkedList.count_nodes())
 print(dlinkedList)
 print("=" * 100)
 
@@ -268,9 +215,8 @@ dlinkedList.delete_last_node()
 dlinkedList.delete_specified_node("A")
 print(dlinkedList)
 
-# slinkedList.print_information()
+dlinkedList.print_information()
 print(dlinkedList.print_specific_info("alksdj"))
 print(dlinkedList.print_specific_info("E"))
 
 print(dlinkedList.count_nodes())
-'''
