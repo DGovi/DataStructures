@@ -79,8 +79,25 @@ class Singly_LinkedList():
             current_node = current_node.next
         print("deleted a node")
 
+    def get_node_data(self, specified_node_name):
+        current_node = self.head
+
+        # a generic case
+        while current_node.next is not None:
+            if current_node.name == specified_node_name:
+                return current_node.data
+                break
+            current_node = current_node.next
+
+        # if the specified node is the last one
+        if current_node.name == specified_node_name:
+            return current_node.data
+        # if node is not found
+        else:
+            return "No such node with name: \n\t" + specified_node_name + "\n"
     # print the information of a spefific node
-    def print_specific_info(self, specified_node_name):
+
+    def get_specific_info(self, specified_node_name):
         current_node = self.head
 
         # a generic case
@@ -115,32 +132,6 @@ class Singly_LinkedList():
             current_node = current_node.next
 
         return num_nodes
-
-
-'''
-# linkedlist creation methods
-slinkedList = Singly_LinkedList("A", 5)
-slinkedList.add_at_end("B", 6)
-slinkedList.add_at_end("c", 7)
-slinkedList.add_at_start("sausage", 6)
-slinkedList.add_at_start("d", 4)
-slinkedList.add_after_specified("A", "E", 5)
-print(slinkedList)
-print(slinkedList.count_nodes())
-print("=" * 100)
-
-
-# linked list delteion functions
-slinkedList.delete_first_node()
-slinkedList.delete_last_node()
-slinkedList.delete_specified_node("A")
-print(slinkedList)
-# slinkedList.print_information()
-print(slinkedList.print_specific_info("alksdj"))
-print(slinkedList.print_specific_info("A"))
-
-print(slinkedList.count_nodes())
-'''
 
 class Doubly_LinkedList(Singly_LinkedList):
 
@@ -196,27 +187,34 @@ class Doubly_LinkedList(Singly_LinkedList):
             current_node = current_node.next
         print("deleted a node")
 
+def testLinkedList(linkedList):
 
+    linkedList.add_at_end("B", 6)
+    linkedList.add_at_end("c", 7)
+
+    linkedList.add_at_start("sausage", 6)
+    linkedList.add_at_start("d", 4)
+    linkedList.add_after_specified("A", "E", 5)
+
+    print(linkedList.count_nodes())
+    print(linkedList)
+    print("=" * 100)
+
+    # linked list delteion functions
+    linkedList.delete_first_node()
+    linkedList.delete_last_node()
+    linkedList.delete_specified_node("A")
+    print(linkedList)
+
+    linkedList.print_information()
+    print(linkedList.get_specific_info("alksdj"))
+    print(linkedList.get_specific_info("E"))
+    print(linkedList.get_node_data("E"))
+
+    print(linkedList.count_nodes())
+
+
+slinkedList = Singly_LinkedList("A", 5)
 dlinkedList = Doubly_LinkedList("A", 5)
-dlinkedList.add_at_end("B", 6)
-dlinkedList.add_at_end("c", 7)
-
-dlinkedList.add_at_start("sausage", 6)
-dlinkedList.add_at_start("d", 4)
-dlinkedList.add_after_specified("A", "E", 5)
-
-print(dlinkedList.count_nodes())
-print(dlinkedList)
-print("=" * 100)
-
-# linked list delteion functions
-dlinkedList.delete_first_node()
-dlinkedList.delete_last_node()
-dlinkedList.delete_specified_node("A")
-print(dlinkedList)
-
-dlinkedList.print_information()
-print(dlinkedList.print_specific_info("alksdj"))
-print(dlinkedList.print_specific_info("E"))
-
-print(dlinkedList.count_nodes())
+# testLinkedList(slinkedList)
+testLinkedList(dlinkedList)
