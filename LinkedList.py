@@ -18,8 +18,7 @@ class Singly_LinkedList():
         print("Singly Linked List created")
         self.head = Node(first_node_name, first_node_data)
 
-        # print how the linkedlist looks like
-
+    # print how the linkedlist looks like
     def __str__(self):
         llist = ""
         current_node = self.head
@@ -58,7 +57,6 @@ class Singly_LinkedList():
         print("deleted a node")
 
     # adds node after a specified node name
-
     def add_after_specified(self, specified_name, node_name, node_data):
         current_node = self.head
 
@@ -187,6 +185,7 @@ class Doubly_LinkedList(Singly_LinkedList):
             current_node = current_node.next
         print("deleted a node")
 
+
 def testLinkedList(linkedList):
 
     linkedList.add_at_end("B", 6)
@@ -217,4 +216,4 @@ def testLinkedList(linkedList):
 slinkedList = Singly_LinkedList("A", 5)
 dlinkedList = Doubly_LinkedList("A", 5)
 # testLinkedList(slinkedList)
-testLinkedList(dlinkedList)
+# testLinkedList(dlinkedList)
