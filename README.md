@@ -1,3 +1,4 @@
-# LinkedList
+# Data structures
 
-Singly LinkedList and Doubly LinkedList from scratch using inheritance
+This repo is used to implement some of the common datastrutres such as:
+ * Singly LinkedList and Doubly LinkedList
